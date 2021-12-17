@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
 
 import { TickerRoutingModule } from './ticker-routing.module';
 import { TickerComponent } from './ticker.component';
@@ -11,7 +12,8 @@ import { TickerComponent } from './ticker.component';
   ],
   imports: [
     CommonModule,
-    TickerRoutingModule
+    TickerRoutingModule,
+    MatTableModule
   ]
 })
 export class TickerModule { }
