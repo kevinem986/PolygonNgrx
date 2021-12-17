@@ -1,4 +1,11 @@
 <h4>Ticker</h4>
+<section>
+    <div class="button-label">Filter</div>
+    <div class="button-row">
+      <button mat-raised-button color="primary" (click)="getTickers()">Get Tickers</button>
+    </div>
+  </section>
+<mat-divider></mat-divider>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 

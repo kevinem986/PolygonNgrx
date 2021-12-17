@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TickerStore } from './ticker.store';
+import { Ticker } from 'src/shared/model/ticker.model';
+import { Observable } from 'rxjs';
 
 export interface PeriodicElement {
   name: string;
@@ -23,16 +26,27 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-ticker',
   templateUrl: './ticker.component.html',
-  styleUrls: ['./ticker.component.scss']
+  styleUrls: ['./ticker.component.scss'],
+  providers: [TickerStore]
 })
 
 export class TickerComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
+  tickers$!: Observable<Ticker[]>;
 
-  constructor() { }
+  constructor(
+    public store: TickerStore
+  ) {
+   }
 
   ngOnInit(): void {
+  }
+
+  getTickers() {
+    console.log('Function Get tickers')
+    this.store.getTickers({ 'active': true, 'sort': 'ticker','order': 'asc', 'limit': 10})
+    this.tickers$ = this.store.tickers$;
   }
 
 }

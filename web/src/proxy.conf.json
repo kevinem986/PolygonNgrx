@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://api.polygon.io",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
