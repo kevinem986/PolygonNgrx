@@ -2,40 +2,71 @@
 <section>
     <div class="button-label">Filter</div>
     <div class="button-row">
-      <button mat-raised-button color="primary" (click)="getTickers()">Get Tickers</button>
+        <button mat-raised-button color="primary" (click)="getTickers()">Get Tickers</button>
+        <button mat-raised-button color="secondary" (click)="clearTickers()">Clear</button>
     </div>
-  </section>
+</section>
 <mat-divider></mat-divider>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="this.tickers$" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <!-- Ticker Column -->
+    <ng-container matColumnDef="primary_exchange">
+        <th mat-header-cell *matHeaderCellDef> Primary Exchange </th>
+        <td mat-cell *matCellDef="let element"> {{element.primary_exchange}} </td>
     </ng-container>
-  
+
+    <!-- Ticker Column -->
+    <ng-container matColumnDef="ticker">
+        <th mat-header-cell *matHeaderCellDef> Ticker </th>
+        <td mat-cell *matCellDef="let element"> {{element.ticker}} </td>
+    </ng-container>
+
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+
+    <!-- Market Column -->
+    <ng-container matColumnDef="market">
+        <th mat-header-cell *matHeaderCellDef> Market </th>
+        <td mat-cell *matCellDef="let element"> {{element.market}} </td>
     </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+
+    <!-- Currency Column -->
+    <ng-container matColumnDef="currency_name">
+        <th mat-header-cell *matHeaderCellDef> Currency </th>
+        <td mat-cell *matCellDef="let element"> {{element.currency_name}} </td>
     </ng-container>
-  
+
+    <ng-container matColumnDef="cik">
+        <th mat-header-cell *matHeaderCellDef> CIK </th>
+        <td mat-cell *matCellDef="let element"> {{element.cik}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="composite_figi">
+        <th mat-header-cell *matHeaderCellDef> Composite Figi </th>
+        <td mat-cell *matCellDef="let element"> {{element.composite_figi}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="share_class_figi">
+        <th mat-header-cell *matHeaderCellDef> Share Class Figi </th>
+        <td mat-cell *matCellDef="let element"> {{element.share_class_figi}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef> Active </th>
+        <td mat-cell *matCellDef="let element"> {{element.active}} </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+</table>

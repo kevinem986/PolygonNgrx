@@ -11,8 +11,9 @@ interface TickerState {
 
 @Injectable()
 export class TickerStore extends ComponentStore<TickerState> {
-
-  readonly tickers$: Observable<Ticker[]> = this.select(state => state.tickers);
+  readonly tickers$: Observable<Ticker[]> = this.select(
+    (state) => state.tickers
+  );
 
   getTickers = this.effect(
     (
